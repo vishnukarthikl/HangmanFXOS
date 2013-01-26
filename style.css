@@ -12,3 +12,8 @@ body{
 .clicked {
     background: #feef39;
 }
+
+canvas {width:100%}
+#wordContainer  {
+    width: 80%;
+}

@@ -84,6 +84,7 @@ function draw(context, guessCounter, circleX, circleY, radius) {
             context.strokeStyle = '#003300';
             context.stroke();
             context.closePath();
+            alert("Sorry Better Luck in ur next Life ! :P")
             break;
 
         case 7:
@@ -135,18 +136,25 @@ $("body").ready(function () {
     var movie = [
             {name: "Broken City", category: "war"},
             {name: "Gangster Squad", category: "action"},
-            {name: "Silver Linings Playbook", category: "humour"},
-            {name: "Game of Thrones", category: "book"}
+            {name: "Silver Linings Playbook", category: "book"},
+            {name: "Game of Thrones", category: "book"},
+            {name:"Shawshank Redemption",category: "drama"}
         ]
         ;
     var category = [];
+    var found = 0;
     category[0] = movie[0].category;
     for (var i = 1; i < movie.length; i++) {
         for (var j = 0; j < category.length; j++) {
-            if (movie[i].category != category[j]) {
-                category.push(movie[i].category);
+            if (movie[i].category == category[j]) {
+                found = 1;
                 break;
             }
+        }
+        if(found == 0)
+        {
+            category.push(movie[i].category);
+            found = 0;
         }
     }
     for (var i = 0; i < category.length; i++) {
