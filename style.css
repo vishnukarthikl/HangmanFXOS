@@ -1,0 +1,14 @@
+body{
+    font-size: 20px;
+    text-align: center;
+}
+.strike {
+    text-decoration: line-through   ;
+}
+.invalid {
+    background: #ff544a;
+}
+
+.clicked {
+    background: #feef39;
+}
