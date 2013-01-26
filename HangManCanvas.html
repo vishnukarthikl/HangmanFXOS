@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css"/>
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+
+</head>
+<body>
+<canvas id="hangMan" style="border:1px solid #c3c3c3;">
+
+</canvas>
+</body>
+
+<script type="text/javascript">
+
+    function drawEllipse(centerX, centerY, width, height) {
+
+        context.beginPath();
+
+        context.moveTo(centerX, centerY - height / 2); // A1
+
+        context.bezierCurveTo(
+                centerX + width / 2, centerY - height / 2, // C1
+                centerX + width / 2, centerY + height / 2, // C2
+                centerX, centerY + height / 2); // A2
+
+        context.bezierCurveTo(
+                centerX - width / 2, centerY + height / 2, // C3
+                centerX - width / 2, centerY - height / 2, // C4
+                centerX, centerY - height / 2); // A1
+
+        context.closePath();
+    }
+
+
+        var canvas = document.getElementById("hangMan");
+        var context = canvas.getContext("2d");
+        var guessCounter = 0;
+
+        canvas.width = screen.width / 2;
+        canvas.height = .8 * screen.height;
+
+
+        var leftWidth = canvas.width;
+        var leftHeight = canvas.height;
+
+        var circleX = .6 * leftWidth;
+        var circleY = .325 * leftHeight;
+        var radius = 40;
+
+        //alert(leftHeight);
+        context.beginPath();
+        context.fillStyle = "#631C39";
+        context.fillRect(.15 * leftWidth, .1 * leftHeight, .6 * leftWidth, .045 * leftHeight);
+        context.fillRect(.20 * leftWidth, .145 * leftHeight, .045 * leftWidth, .65 * leftHeight);
+        context.fillRect(.15 * leftWidth, .795 * leftHeight, .3 * leftWidth, .045 * leftHeight);
+        context.closePath();
+
+    function draw() {
+
+        context.scale(3, 0.5);
+        switch (++guessCounter) {
+            case 1:
+
+                context.beginPath();
+                context.arc(circleX, circleY, radius, 0, 2 * Math.PI, false);
+                context.lineWidth = 3;
+                context.strokeStyle = '#003300';
+                context.stroke();
+                context.closePath();
+                break;
+            case 2:
+                context.beginPath();
+                context.moveTo(circleX, circleY + radius);
+                context.lineTo(circleX, circleY + 5 * radius);
+                context.closePath();
+                break;
+            case 3:
+                context.beginPath();
+                context.moveTo(circleX, circleY + 1.5 * radius);
+                context.lineTo(circleX - 2 * radius, circleY + 3 * radius);
+                context.closePath();
+                break;
+            case 4:
+                context.beginPath();
+                context.moveTo(circleX, circleY + 1.5 * radius);
+                context.lineTo(circleX + 2 * radius, circleY + 3 * radius);
+                context.closePath();
+                break;
+            case 5:
+                context.beginPath();
+                context.moveTo(circleX, circleY + 5 * radius);
+                context.lineTo(circleX - 2 * radius, circleY + 7 * radius);
+                break;
+            case 6:
+                context.beginPath();
+                context.moveTo(circleX, circleY + 5 * radius);
+                context.lineTo(circleX + 2 * radius, circleY + 7 * radius);
+
+                context.stroke();
+                context.closePath();
+                break;
+
+            case 7:
+                context.beginPath();
+                drawEllipse(143, 575, radius, radius / 2);
+                context.closePath();
+                break;
+            case 8:
+                context.beginPath();
+                context.moveTo(128, 575);
+                context.lineTo(128, 200);
+                context.closePath()
+                break;
+        }
+    }
+
+</script>
+
+</html>
