@@ -1,10 +1,12 @@
-body{
+body {
     font-size: 20px;
     text-align: center;
 }
+
 .strike {
-    text-decoration: line-through   ;
+    text-decoration: line-through;
 }
+
 .invalid {
     background: #ff544a;
 }
@@ -13,7 +15,17 @@ body{
     background: #feef39;
 }
 
-canvas {width:100%}
-#wordContainer  {
+canvas {
+    width: 100%
+}
+
+#wordContainer {
     width: 80%;
+    margin-left: 10%;
+}
+
+#categoryList {
+    width: 24%;
+    margin-left: 42%;
+    margin-right: 42%;
 }

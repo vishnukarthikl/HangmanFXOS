@@ -90,16 +90,16 @@ function draw(context, guessCounter, circleX, circleY, radius) {
         case 7:
             context.beginPath();
             context.moveTo(circleX, circleY + 5 * radius);
-            drawEllipse(context, circleX, circleY+ 1.5*radius, radius, radius / 2);
+            drawEllipse(context, circleX, circleY + 1.5 * radius, radius, radius / 2);
             context.strokeStyle = '#003300';
             context.stroke();
             context.closePath();
             break;
         case 8:
             context.beginPath();
-            context.moveTo(circleX, circleY-radius);
-            context.lineTo(circleX-radius,circleY- 4*radius);
-            context.moveTo(circleX-radius, circleY+ radius);
+            context.moveTo(circleX, circleY - radius);
+            context.lineTo(circleX - radius, circleY - 4 * radius);
+            context.moveTo(circleX - radius, circleY + radius);
             //context.lineTo(circleX-radius, circleY - 4* radius);
             context.strokeStyle = '#003300';
             context.stroke();
@@ -138,7 +138,7 @@ $("body").ready(function () {
             {name: "Gangster Squad", category: "action"},
             {name: "Silver Linings Playbook", category: "book"},
             {name: "Game of Thrones", category: "book"},
-            {name:"Shawshank Redemption",category: "drama"}
+            {name: "Shawshank Redemption", category: "drama"}
         ]
         ;
     var category = [];
@@ -151,15 +151,14 @@ $("body").ready(function () {
                 break;
             }
         }
-        if(found == 0)
-        {
+        if (found == 0) {
             category.push(movie[i].category);
             found = 0;
         }
     }
     for (var i = 0; i < category.length; i++) {
-        tag = "<span class='category " + category[i] + " ' value='" + category[i] + "'>&nbsp" + category[i] + "</span>";
-        $('#categoryList').append(tag);
+        tag = "<option class='category " + category[i] + " ' value='" + category[i] + "'>" + category[i] + "</span>";
+        $('#categories').append(tag);
     }
     var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
     var checkArray = "AEIOU ";
@@ -168,10 +167,10 @@ $("body").ready(function () {
 
     for (var i = 0; i < letters.length; i++) {
         if (checkArray.indexOf(letters[i]) >= 0) {
-            tag = "<span class='letters " + letters[i] + " strike invalid' value='" + letters[i] + "'>&nbsp" + letters[i] + "</span>";
+            tag = "&nbsp<span class='letters " + letters[i] + " strike invalid' value='" + letters[i] + "'>" + letters[i] + "</span>";
         }
         else {
-            tag = "<span class='letters " + letters[i] + "' value='" + letters[i] + "'>&nbsp" + letters[i] + "</span>";
+            tag = "&nbsp<span class='letters " + letters[i] + "' value='" + letters[i] + "'>&nbsp" + letters[i] + "</span>";
         }
         $('#lettersContainer').append(tag);
     }
@@ -186,7 +185,7 @@ $("body").ready(function () {
         if (checkArray.indexOf(letterToCheck) >= 0) {
             value = letterToCheck;
         }
-        return "<span class = 'disp " + letterToCheck + "' value = '" + letterToCheck + "'>&nbsp;" + value + "</span>";
+        return "&nbsp;<span class = 'disp " + letterToCheck + "' value = '" + letterToCheck + "'>" + value + "</span>";
     }
 
 
@@ -200,73 +199,7 @@ $("body").ready(function () {
 
         if ($(toSearch).length <= 0) {
 
-            draw(context,++guessCounter,circleX,circleY,radius);
-//            switch (++guessCounter) {
-//                case 1:
-//
-//                    context.beginPath();
-//                    context.arc(circleX, circleY, radius, 0, 2 * Math.PI, false);
-//                    context.lineWidth = 3;
-//                    context.strokeStyle = '#003300';
-//                    context.stroke();
-//                    context.closePath();
-//                    break;
-//                case 2:
-//                    context.beginPath();
-//                    context.moveTo(circleX, circleY + radius);
-//                    context.lineTo(circleX, circleY + 5 * radius);
-//                    context.strokeStyle = '#003300';
-//                    context.stroke();
-//                    context.closePath();
-//                    break;
-//                case 3:
-//                    context.beginPath();
-//                    context.moveTo(circleX, circleY + 1.5 * radius);
-//                    context.lineTo(circleX - 2 * radius, circleY + 3 * radius);
-//                    context.strokeStyle = '#003300';
-//                    context.stroke();
-//                    context.closePath();
-//                    break;
-//                case 4:
-//                    context.beginPath();
-//                    context.moveTo(circleX, circleY + 1.5 * radius);
-//                    context.lineTo(circleX + 2 * radius, circleY + 3 * radius);
-//                    context.strokeStyle = '#003300';
-//                    context.stroke();
-//                    context.closePath();
-//                    break;
-//                case 5:
-//                    context.beginPath();
-//                    context.moveTo(circleX, circleY + 5 * radius);
-//                    context.lineTo(circleX - 2 * radius, circleY + 7 * radius);
-//                    context.strokeStyle = '#003300';
-//                    context.stroke();
-//                    break;
-//                case 6:
-//                    context.beginPath();
-//                    context.moveTo(circleX, circleY + 5 * radius);
-//                    context.lineTo(circleX + 2 * radius, circleY + 7 * radius);
-//                    context.strokeStyle = '#003300';
-//                    context.stroke();
-//                    context.closePath();
-//                    break;
-//
-//                case 7:
-//                    context.beginPath();
-//                    drawEllipse(context, 143, 575, radius, radius / 2);
-//                    context.strokeStyle = '#003300';
-//                    context.stroke();
-//                    context.closePath();
-//                    break;
-//                case 8:
-//                    context.beginPath();
-//                    context.moveTo(128, 575);
-//                    context.lineTo(128, 200);
-//                    context.strokeStyle = '#003300';
-//                    context.stroke();
-//                    context.closePath()
-//                    break;
-//            }
+            draw(context, ++guessCounter, circleX, circleY, radius);
         }
         else {
             $(toSearch).html("&nbsp" + clickedLetter);
@@ -275,20 +208,23 @@ $("body").ready(function () {
 
     });
 
-    $(".category").click(function () {
 
-        var clickedCategory = $(this).attr("value");
-        while (true) {
-            randomMovieNumber = Math.floor((Math.random() * movie.length - 1 ) + 1)
-            if (movie[randomMovieNumber].category == clickedCategory) {
-                for (var i = 0; i < movie[randomMovieNumber].name.length; i++) {
-                    $('#wordContainer').append(constructTag(movie[randomMovieNumber].name[i].toUpperCase()));
-                }
+    $("#categoryButton").click(function () {
+        var clickedCategory = $("#categories").val();
 
-                break;
+        var movieOfCategory = [];
+        for (var i = 0; i < movie.length; i++) {
+            if (movie[i].category == clickedCategory) {
+                movieOfCategory.push(movie[i]);
             }
         }
 
+        $('#wordContainer').html("");
+
+        randomMovieNumber = Math.floor((Math.random() * movieOfCategory.length - 1 ) + 1)
+        for (var i = 0; i < movie[randomMovieNumber].name.length; i++) {
+            $('#wordContainer').append(constructTag(movie[randomMovieNumber].name[i].toUpperCase()));
+        }
     });
 })
 ;
